@@ -56,6 +56,7 @@ fun main() {
             1234L
         )
     )
+    //Here,we can't serialize object to JSON correctly
     try {
         val buffer = ResizableBuffer()
         buffer.outputStream().use {
@@ -77,6 +78,7 @@ fun main() {
     }
     println(newData == testData)
     tempFile.delete()
+    //After serializing the JSON to FileOutputStream,we can serialize the object correctly
     val buffer = ResizableBuffer()
     buffer.outputStream().use {
         Json.encodeToStream(testData,it)
